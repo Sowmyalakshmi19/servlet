@@ -1,0 +1,45 @@
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class newserv extends HttpServlet {
+
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+           String name=request.getParameter("t1");
+                String address=request.getParameter("t2");
+                String citizen=request.getParameter("t6");
+                String a2=request.getParameter("t3");
+                int age=Integer.parseInt(a2);
+                        
+                double salary=Double.parseDouble(request.getParameter("t4"));
+                long ph_no=Long.parseLong(request.getParameter("t5"));
+                int a=30;
+                
+                if(age > a){
+                    salary=salary+5000;
+                }
+                
+                
+                if(citizen.equalsIgnoreCase("indian")){
+                    salary=salary+2000;
+                }
+                
+                
+                out.println("Name ="+name);
+                out.println("Address ="+address);
+                out.println("Age ="+age);
+                out.println("Salary ="+salary);
+                out.println("ph no="+ph_no);
+                out.println("Citizen ="+citizen);
+        }
+    }
+
+   
